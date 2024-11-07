@@ -10,7 +10,7 @@
     <div id="loginPage">
         <div class="login-container">
             <h2>Login</h2>
-            <form id="loginForm">
+            <form id="loginForm" onsubmit="return loginUser(event)">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
                 <label for="password">Password:</label>
@@ -22,7 +22,7 @@
     </div>
     <div id="musicPlayerPage" style="display: none;">
         <header>
-            <h1>Locker - khaleel</h1>
+            <h1>Locker - Khaleel</h1>
         </header>
         <div class="media-container">
             <!-- Image -->
@@ -35,13 +35,28 @@
             </video>
         
             <!-- File Link -->
-             <br><br><br>
-            <a href="./js.js" class="file-link" download>Java script code  File</a>
-        </div>        <footer>
+            <br><br><br>
+            <a href="./js.js" class="file-link" download>JavaScript Code File</a>
+        </div>
+        <footer>
             <p>Copy Rights: @ Khaleel</p>
             <p>Email: khaleel7550@gmail.com</p>
         </footer>
     </div>
-    <script src="js/scripts.js"></script>
+    <script>
+        function loginUser(event) {
+            event.preventDefault(); // Prevent form from submitting
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const loginError = document.getElementById("loginError");
+
+            if (username === "sk" && password === "khaleel") {
+                document.getElementById("loginPage").style.display = "none";
+                document.getElementById("musicPlayerPage").style.display = "block";
+            } else {
+                loginError.textContent = "Invalid username or password. Please try again.";
+            }
+        }
+    </script>
 </body>
 </html>
